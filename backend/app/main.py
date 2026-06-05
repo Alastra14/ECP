@@ -48,7 +48,8 @@ if not _DIST.exists():
     _DIST = PROJECT_ROOT / "frontend" / "dist"
 
 if _DIST.exists():
-    app.mount("/assets", StaticFiles(directory=_DIST / "assets"), name="assets")
+    if (_DIST / "assets").exists():
+        app.mount("/assets", StaticFiles(directory=_DIST / "assets"), name="assets")
 
     @app.get("/")
     def index():
