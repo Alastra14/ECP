@@ -1,0 +1,17 @@
+# App ECP — local. Levanta todo con: docker compose up --build
+services:
+  ecp:
+    build: .
+    container_name: ecp-app
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persistencia de la base SQLite y archivos subidos entre reinicios.
+      - ./data:/app/data
+      # (Opcional) montar la carpeta RESULTADO/ para auto-sembrar datos de referencia.
+      # - "/ruta/a/RESULTADO:/data/resultado:ro"
+    environment:
+      ECP_ANIO_ACTIVO: "2026"
+      ECP_MES_ACTIVO: "4"
+      # ECP_RESULTADO_DIR: "/data/resultado"   # descomentar si se monta el volumen de arriba
+    restart: unless-stopped
