@@ -1,0 +1,172 @@
+/* =============================================================
+   Ternova Group — Colors & Type
+   Primary brand palette derived from the Ternova logo system:
+   - Deep indigo/purple (the TERNOVA wordmark)
+   - Vivid orange (the accent flag in the isotipo)
+   - Off-white / warm neutrals for corporate materials
+   =========================================================== */
+
+/* ---------- Fonts ---------- */
+/* Space Grotesk 400/500/700 via Google Fonts as fallback weights */
+:root {
+  /* ============== Brand Colors ============== */
+  /* Indigo / purple from the wordmark */
+  --tn-indigo-950: #13002E;  /* deepest, heading use */
+  --tn-indigo-900: #1D0447;  /* core brand indigo (logo) */
+  --tn-indigo-800: #2A0A60;
+  --tn-indigo-700: #3A1380;
+  --tn-indigo-500: #5A37B0;
+  --tn-indigo-300: #9A83D6;
+  --tn-indigo-100: #E8E1F5;
+  --tn-indigo-50:  #F4F0FA;
+
+  /* Orange accent from the isotipo flag */
+  --tn-orange-900: #B84800;
+  --tn-orange-700: #DB5A00;
+  --tn-orange-500: #FF6A00;  /* primary accent */
+  --tn-orange-400: #FF8328;
+  --tn-orange-200: #FFCDA3;
+  --tn-orange-50:  #FFF2E6;
+
+  /* Neutrals — warm, corporate-paper feel */
+  --tn-ink:        #0E0320;   /* near-black ink, slight purple tint */
+  --tn-graphite:   #2A2438;
+  --tn-slate:      #5A5468;
+  --tn-mute:       #8A8599;
+  --tn-line:       #E4E1EC;
+  --tn-paper:      #F6F3EE;   /* warm off-white corporate bg */
+  --tn-paper-2:    #FBF9F5;
+  --tn-white:      #FFFFFF;
+
+  /* Semantic / impact colors (sustainability reporting) */
+  --tn-green:      #3E8F5A;   /* sustainability / positive */
+  --tn-green-50:   #E8F2EC;
+  --tn-amber:      #E2A235;
+  --tn-red:        #C4413A;
+  --tn-info:       #2F6BD6;
+
+  /* ============== Semantic Color Roles ============== */
+  --color-bg:          var(--tn-paper);
+  --color-bg-elevated: var(--tn-white);
+  --color-bg-inverse:  var(--tn-indigo-900);
+  --color-fg:          var(--tn-ink);
+  --color-fg-muted:    var(--tn-slate);
+  --color-fg-subtle:   var(--tn-mute);
+  --color-fg-inverse:  var(--tn-white);
+  --color-border:      var(--tn-line);
+  --color-border-strong: var(--tn-graphite);
+  --color-accent:      var(--tn-orange-500);
+  --color-accent-hover: var(--tn-orange-700);
+  --color-primary:     var(--tn-indigo-900);
+  --color-primary-hover: var(--tn-indigo-800);
+  --color-link:        var(--tn-indigo-900);
+
+  /* ============== Type System ============== */
+  --font-display: "Gosha Sans", "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:    "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Scale — display pairs with Gosha Sans (geometric), body with Space Grotesk */
+  --fs-hero:    clamp(56px, 7vw, 112px);  /* full-bleed hero */
+  --fs-display: clamp(40px, 5vw, 72px);
+  --fs-h1:      clamp(32px, 4vw, 56px);
+  --fs-h2:      clamp(26px, 3vw, 40px);
+  --fs-h3:      22px;
+  --fs-h4:      18px;
+  --fs-body:    16px;
+  --fs-small:   14px;
+  --fs-eyebrow: 12px;
+
+  --lh-tight:   1.02;
+  --lh-heading: 1.1;
+  --lh-body:    1.55;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.14em;  /* eyebrows / nav (uppercase) */
+
+  /* ============== Spacing ============== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ============== Radii ============== */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ============== Shadows / Elevation ============== */
+  --elev-1: 0 1px 2px rgba(19, 0, 46, 0.06);
+  --elev-2: 0 6px 20px rgba(19, 0, 46, 0.08);
+  --elev-3: 0 16px 40px rgba(19, 0, 46, 0.14);
+  --elev-focus: 0 0 0 3px rgba(255, 106, 0, 0.35);
+
+  /* ============== Motion ============== */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in:       cubic-bezier(0.55, 0, 0.7, 0.2);
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:      160ms;
+  --dur-base:      260ms;
+  --dur-slow:      480ms;
+}
+
+/* ============== Base semantic element styles ============== */
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 700;       /* Gosha Sans Bold for punchy headlines */
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+  color: var(--tn-indigo-900);
+  margin: 0;
+}
+h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--tn-indigo-900);
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+.tn-hero    { font-family: var(--font-display); font-size: var(--fs-hero);    line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); color: var(--tn-indigo-900); }
+.tn-display { font-family: var(--font-display); font-size: var(--fs-display); line-height: var(--lh-heading); letter-spacing: var(--tracking-tight); color: var(--tn-indigo-900); }
+
+.tn-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: 600;
+  color: var(--tn-orange-500);
+}
+
+p, .tn-body { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-fg); }
+.tn-lede    { font-size: 20px; line-height: 1.45; color: var(--color-fg-muted); }
+.tn-small   { font-size: var(--fs-small); color: var(--color-fg-muted); }
+.tn-mono    { font-family: var(--font-mono); font-size: 13px; }
+
+a { color: var(--color-link); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--color-accent); }

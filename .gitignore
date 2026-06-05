@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ecpvenv/
+*.egg-info/
+.pytest_cache/
+ecp.db
+*.sqlite3
+
+# Node / Angular
+node_modules/
+frontend/dist/
+frontend/.angular/
+npm-debug.log*
+
+# Datos sensibles (no versionar Excel del ERP)
+data/uploads/
+*.xlsx
+!data/samples/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
