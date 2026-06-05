@@ -70,6 +70,30 @@ def ecp_periodo(db: Session, periodo: str) -> dict:
     return ecp
 
 
+def serie_temporal(db: Session) -> dict:
+    """Serie por periodo del consolidado (para tendencias): unitario, volumen, costos."""
+    puntos = []
+    for p in periodos_disponibles(db):
+        ecp = ecp_periodo(db, p)
+        tr = ecp["total"]["real"]
+        tp = ecp["total"]["ppto"]
+        cif_r = tr.get("cif_var", 0) + tr.get("cif_fijo", 0) + tr.get("deprec", 0)
+        tiene_ppto = any(tp.get(k, 0) for k in ("mp", "mod", "volumen"))
+        puntos.append({
+            "periodo": p,
+            "real": {
+                "unit_final": round(tr.get("unit_final", 0), 3),
+                "volumen": round(tr.get("volumen", 0), 1),
+                "mp": round(tr.get("mp", 0), 1),
+                "mod": round(tr.get("mod", 0), 1),
+                "cif": round(cif_r, 1),
+                "costo": round(tr.get("costo_prod_deprec", 0), 1),
+            },
+            "ppto_unit_final": round(tp.get("unit_final", 0), 3) if tiene_ppto else None,
+        })
+    return {"puntos": puntos}
+
+
 def flujo_periodo(db: Session, periodo: str) -> dict:
     """Datos para la visualización del flujo (6 etapas) con números reales."""
     ecp = ecp_periodo(db, periodo)

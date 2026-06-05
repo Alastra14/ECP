@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { EcpResponse, FlujoResponse, UploadResultado } from './models';
+import { EcpResponse, FlujoResponse, UploadResultado, SeriePunto } from './models';
 
 // En dev (ng serve :4200) apunta al backend en :8000; en prod usa rutas relativas.
 const BASE = (typeof window !== 'undefined' && window.location.port === '4200')
@@ -23,6 +23,10 @@ export class ApiService {
 
   flujo(periodo: string): Observable<FlujoResponse> {
     return this.http.get<FlujoResponse>(`${BASE}/api/flujo/${periodo}`);
+  }
+
+  serie(): Observable<{ puntos: SeriePunto[] }> {
+    return this.http.get<{ puntos: SeriePunto[] }>(`${BASE}/api/serie`);
   }
 
   seed(): Observable<any> { return this.http.post(`${BASE}/api/seed`, {}); }

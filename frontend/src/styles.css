@@ -141,3 +141,32 @@ table.ecp tr:hover td { background: var(--tn-paper-2); }
 
 .fade-in { animation: fade var(--dur) var(--ease); }
 @keyframes fade { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform:none; } }
+
+/* ===== Bento / paneles (estilo FinOps) ===== */
+.bento { display:grid; grid-template-columns:2fr 1fr; gap:20px; align-items:start; }
+.bento .col { display:flex; flex-direction:column; gap:20px; }
+.row-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:900px){ .bento { grid-template-columns:1fr; } .row-2 { grid-template-columns:1fr; } }
+
+.panel { background:white; border:1px solid var(--color-border); border-radius:var(--r-md);
+  box-shadow:var(--elev-1); overflow:hidden; }
+.panel-head { display:flex; justify-content:space-between; align-items:flex-start; padding:18px 22px 8px; gap:16px; }
+.panel-title { font-family:var(--font-sans); font-weight:600; font-size:16px; color:var(--tn-indigo-900); margin:0; }
+.panel-sub { font-size:11px; color:var(--tn-mute); margin-top:3px; text-transform:uppercase; letter-spacing:.07em; font-weight:600; }
+.panel-body { padding:6px 22px 20px; }
+
+/* Banda de KPIs de cabecera (borde de color por tono) */
+.kpi-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
+.kpi-card { position:relative; background:white; border:1px solid var(--color-border); border-radius:var(--r-md);
+  padding:18px 20px; overflow:hidden; }
+.kpi-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--tn-indigo-900); }
+.kpi-card.accent::before { background:var(--tn-orange-500); }
+.kpi-card.green::before { background:var(--tn-green); }
+.kpi-card.red::before { background:var(--tn-red); }
+.kpi-card .k-label { font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--tn-mute); font-weight:600; }
+.kpi-card .k-value { font-family:var(--font-display); font-size:32px; line-height:1.05; color:var(--tn-indigo-900); margin-top:8px; }
+.kpi-card .k-value small { font-size:13px; color:var(--tn-slate); font-family:var(--font-sans); margin-left:3px; }
+.kpi-card .k-delta { font-size:12.5px; font-weight:600; margin-top:6px; }
+.k-delta.up-bad { color:var(--tn-red); } .k-delta.down-good { color:var(--tn-green); }
+.k-delta.up-good { color:var(--tn-green); } .k-delta.down-bad { color:var(--tn-red); }
+.k-delta.flat { color:var(--tn-slate); }

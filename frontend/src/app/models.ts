@@ -41,6 +41,12 @@ export interface FlujoResponse {
   validacion_ok: boolean;
 }
 
+export interface SeriePunto {
+  periodo: string;
+  real: { unit_final: number; volumen: number; mp: number; mod: number; cif: number; costo: number };
+  ppto_unit_final: number | null;
+}
+
 export interface UploadResultado {
   guardados: number;
   detalle: { archivo: string; tipo: string; filas: number; estado: string; nota?: string }[];

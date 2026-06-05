@@ -45,6 +45,11 @@ def flujo(periodo: str, db: Session = Depends(get_session)):
     return service.flujo_periodo(db, periodo)
 
 
+@router.get("/serie")
+def serie(db: Session = Depends(get_session)):
+    return service.serie_temporal(db)
+
+
 @router.get("/validacion/{periodo}")
 def validacion(periodo: str, db: Session = Depends(get_session)):
     return service.ecp_periodo(db, periodo)["validacion"]
